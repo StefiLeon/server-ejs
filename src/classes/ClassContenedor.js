@@ -6,17 +6,19 @@ class Contenedor {
         try {
             let data = await fs.promises.readFile('./files/productos.txt', "utf-8")
             let productos = JSON.parse(data);
+            let id = productos[productos.length-1].id+1;
             if(productos.some(pdt => pdt.title === producto.title)) {
                 console.log("El producto ya existe.");
                 return {status: "error", message: "El producto ya existe"}
             } else {
                 let dataProductos = {
-                    id: producto.id,
+                    id: id,
                     title: producto.title,
                     price: producto.price,
                     thumbnail: producto.thumbnail
                 }
                 productos.push(dataProductos);
+                console.log(dataProductos.id);
                 try {
                     await fs.promises.writeFile('./files/productos.txt', JSON.stringify(productos, null, 2))
                 } catch(err) {
@@ -25,7 +27,7 @@ class Contenedor {
             }
         } catch {
             let dataProductos = {
-            id: producto.id,
+            id: 1,
             title: producto.title,
             price: producto.price,
             thumbnail: producto.thumbnail
@@ -104,6 +106,34 @@ class Contenedor {
         } catch(err) {
             console.log("No anda");
             return {status: "error", message:"No se pudieron borrar los elementos."}
+        }
+    }
+
+    async updateById(id,body) {
+        try {
+            let data = await fs.promises.readFile('./files/productos.txt', 'utf-8');
+            let productos = JSON.parse(data);
+            if(!productos.some(producto => producto.id===id)) return {
+                status:"Error", message:"No hay producto con ese ID."
+            }
+            let result = productos.map(producto => {
+                if(producto.id === id){
+                    body = Object.assign(body)
+                    return body;
+                } else {
+                    return producto;
+                }
+            })
+            try {
+                await fs.promises.writeFile('./files/productos.txt', JSON.stringify(result, null, 2));
+                return {status: "success", message:"Producto actualizado."}
+            } catch(err) {
+                return {status: `error ${err}`, message: "No se pudo actualizar"}
+            }
+        }
+        catch(error){
+            console.log(error);
+            return {status:"Error", message:"Fallo al actualizar el producto"}
         }
     }
 }

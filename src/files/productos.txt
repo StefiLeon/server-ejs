@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "asdfasd",
+    "price": 500,
+    "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "erew",
+    "price": 500,
+    "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
+  },
+  {
+    "id": 3,
+    "title": "xcvzx",
+    "price": 500,
+    "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
+  },
+  {
+    "id": 4,
+    "title": "mesa",
+    "price": 800,
+    "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
+  },
+  {
+    "id": 5,
+    "title": "mesa",
+    "price": 300,
+    "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
+  },
+  {
+    "id": 6,
+    "title": "ajedrez",
+    "price": 800,
+    "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
+  }
+]
