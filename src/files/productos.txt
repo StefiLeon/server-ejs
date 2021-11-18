@@ -34,5 +34,8 @@
     "title": "ajedrez",
     "price": 800,
     "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
+  },
+  {
+    "id": 7
   }
 ]
