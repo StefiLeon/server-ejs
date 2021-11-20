@@ -1,6 +1,18 @@
 const express = require('express');
 const cors = require('cors');
 
+//MULTER
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'public')
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.originalname);
+    }
+})
+const upload = multer({storage: storage});
+
 //EXPRESS
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -17,6 +29,7 @@ const contenedor = new Contenedor;
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cors());
+app.use(upload.single('file'));
 
 //Router
 const productosRouter = require('./routes/productos');
