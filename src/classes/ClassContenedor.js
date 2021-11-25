@@ -1,37 +1,23 @@
-const fs = require('fs');
+import fs from 'fs';
 
-class Contenedor {
+export default class Contenedor {
     
     async save(producto) {
         try {
             let data = await fs.promises.readFile('./files/productos.txt', "utf-8")
             let productos = JSON.parse(data);
             let id = productos[productos.length-1].id+1;
-            if(productos.some(pdt => pdt.title === producto.title)) {
-                console.log("El producto ya existe.");
-                return {status: "error", message: "El producto ya existe"}
-            } else {
-                let dataProductos = {
-                    id: id,
-                    title: producto.title,
-                    price: producto.price,
-                    thumbnail: producto.thumbnail
-                }
-                productos.push(dataProductos);
-                console.log(dataProductos.id);
-                try {
-                    await fs.promises.writeFile('./files/productos.txt', JSON.stringify(productos, null, 2))
-                } catch(err) {
-                    return {status:"Error", message: "No se creo el producto."}
-                }
+            producto = Object.assign({id:id}, producto);
+            productos.push(producto);
+            console.log(producto.id);
+            try {
+                await fs.promises.writeFile('./files/productos.txt', JSON.stringify(productos, null, 2));
+                return {status:"success",message:"Producto registrado"}
+            } catch(err) {
+                return {status:"Error", message: "No se creo el producto."}
             }
         } catch {
-            let dataProductos = {
-            id: 1,
-            title: producto.title,
-            price: producto.price,
-            thumbnail: producto.thumbnail
-            }
+            producto = Object.assign({id:1}, producto);
             try {
                 await fs.promises.writeFile('./files/productos.txt', JSON.stringify([dataProductos], null, 2))
                 return {status: "success", message: "Producto creado con exito."}
@@ -137,5 +123,3 @@ class Contenedor {
         }
     }
 }
-
-module.exports = Contenedor;

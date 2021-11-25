@@ -1,17 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-
-//MULTER
-const multer = require('multer');
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, 'public')
-    },
-    filename: function(req, file, cb) {
-        cb(null, file.originalname);
-    }
-})
-const upload = multer({storage: storage});
+//IMPORTS
+import express from 'express';
+import cors from 'cors';
+import { engine } from 'express-handlebars';
+import productosRouter from './routes/productos.js';
+import upload from './services/uploader.js';
+import Contenedor from './classes/ClassContenedor.js';
+let contenedor = new Contenedor();
 
 //EXPRESS
 const app = express();
@@ -21,20 +15,48 @@ const server = app.listen(PORT, () => {
 })
 server.on('error', (error) => console.log(`Error en el servidor: ${error}`));
 
-//Clase contenedora
-const Contenedor = require('./classes/ClassContenedor');
-const contenedor = new Contenedor;
-
-//Middlewares
+//MIDDLEWARES
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cors());
-app.use(upload.single('file'));
+app.use(express.static('public'));
+app.use(upload.single('thumbnail'));
 
-//Router
-const productosRouter = require('./routes/productos');
+//ROUTER
 app.use('/api/productos', productosRouter);
+
+//ENGINE
+app.engine('handlebars', engine());
+app.set('views', './views');
+app.set('view engine', 'handlebars');
 
 app.get('/', (req, res) => {
     res.send(`<h1 style="color:green;font-family:Georgia, serif">Bienvenidos al servidor express de Stefi</h1>`);
+})
+
+// app.post('/api/uploadfile', upload.fields([
+//     {
+//         name: 'file', maxCount: 1
+//     },
+//     {
+//         name: "documents", maxCount:3
+//     }
+// ]), (req, res) => {
+//         const files = req.files;
+//         console.log(files);
+//         if(!files||files.length===0){
+//             res.status(500).send({messsage:"No se subió archivo"})
+//         }
+//         res.send(files);
+//     }
+// )
+
+app.get('/views/productos', (req, res) => {
+    contenedor.getAll().then(result => {
+        let info = result.lista;
+        let prepObj = {
+            productos: info
+        }
+        res.render('productos', prepObj)
+    })
 })

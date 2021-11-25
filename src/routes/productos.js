@@ -1,7 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const Contenedor = require('../classes/ClassContenedor');
+import express, { Router } from 'express';
+import Contenedor from '../classes/ClassContenedor.js';
+import upload from '../services/uploader.js';
 const contenedor = new Contenedor();
+const router = Router();
 
 //GETS
 router.get('/', async (req, res) => {
@@ -23,8 +24,10 @@ router.get('/random', async (req, res) => {
 
 //POSTS
 router.post('/', (req, res) => {
+    let file = req.file;
     let producto = req.body;
     console.log(producto);
+    producto.thumbnail = `${req.protocol}://${req.hostname}:8080/images/${file.filename}`;
     contenedor.save(producto).then(result => {
         res.send(result);
     })
@@ -48,4 +51,4 @@ router.delete('/pid', (req, res) => {
 })
 
 
-module.exports = router;
+export default router;

@@ -9,22 +9,25 @@
 <body>
     <div>
         <h1>Nuevo producto</h1>
-        <form id="prodForm" name="prodForm">
+        <form action="/api/productos" method="POST" id="prodForm" name="prodForm">
             <label for="title">Nombre</label>
-            <input name="title" required>
+            <input name="title" id="title" placeholder="Nombre" required>
             <br>
             <br>
             <label type="number" for="price">Precio</label>
-            <input name="price" required>
+            <input name="price" id="price" required>
             <br>
             <br>
             <label for="thumbnail">Imagen</label>
-            <input type="file" name="thumbnail" required>
+            <input type="file" accept="image/*" name="thumbnail" id="thumbnail" required>
+            <div>
+                <img id="preview">
+            </div>
             <br>
             <br>
             <button type="submit">Guardar producto</button>
         </form>
     </div>
-    <script type="text/javascript" src="index.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

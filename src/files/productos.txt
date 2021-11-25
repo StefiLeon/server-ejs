@@ -1,44 +1,14 @@
 [
   {
     "id": 1,
-    "title": "asdfasd",
-    "price": 500,
-    "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
+    "title": "prueba 80 mil",
+    "price": "600",
+    "thumbnail": "http://localhost:8080/images/1637816826735Cali-2021-Balonmano-Argentina-vs-Colombia-_ARR9468.jpg"
   },
   {
     "id": 2,
-    "title": "erew",
-    "price": 500,
-    "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
-  },
-  {
-    "id": 3,
-    "title": "xcvzx",
-    "price": 500,
-    "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
-  },
-  {
-    "id": 4,
-    "title": "mesa",
-    "price": 800,
-    "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
-  },
-  {
-    "id": 5,
-    "title": "mesa",
-    "price": 300,
-    "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
-  },
-  {
-    "id": 6,
-    "title": "ajedrez",
-    "price": 800,
-    "thumbnail": "https://snpi.dell.com/snp/images/products/mlrg/es-ar~570-AALK/570-AALKr1.jpg"
-  },
-  {
-    "id": 7,
-    "title": "ya por favor",
-    "price": "200",
-    "thumbnail": {}
+    "title": "kjkl",
+    "price": "312",
+    "thumbnail": "http://localhost:8080/images/1637861683066dg.JPG"
   }
-]
+]n
