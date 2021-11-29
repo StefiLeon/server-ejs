@@ -26,7 +26,7 @@ app.use('/api/productos', productosRouter);
 
 //ENGINE
 app.set('views', './views');
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
     res.send(`<h1 style="color:green;font-family:Georgia, serif">Bienvenidos al servidor express de Stefi</h1>`);

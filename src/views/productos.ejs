@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <title>Mi lista de productos</title>
+</head>
+<body>
+    <h1>Lista de productos</h1>
+    <%if(productos.length>0){%>
+        <% productos.forEach(function(producto) { %>
+            <ul>
+                <li><%=producto.title %></li>
+                <li><%=producto.price %></li>
+                <li><img style="height: 200px;" src=<%=producto.thumbnail %>></li>
+            </ul>
+        <%})%>
+    <%}%>
+    <div>
+        <button>
+            <a href="http://localhost:8080">Agregar producto</a>
+        </button>
+    </div>
+</body>
+</html>
